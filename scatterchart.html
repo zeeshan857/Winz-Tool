@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/graphs.css">
+    <link rel="shortcut icon" href="assets/imgs/Fav-Icon.png" type="image/x-icon">
+
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+       
+    </style>
+    
+</head>
+<body>
+    <div class="home-main-wrapper" id="piechart">
+        <div class="container-fluid">
+          <div class="logged-in-user">
+            <p>Designer Zee</p>
+          </div>
+          <header class="header-wrapper">
+            <div class="logo">
+                <img src="assets/imgs/Winz-Logo-2.png" alt="logo Winz">
+            </div>
+            <nav>
+                <div class="tutorial">
+                  <ul>
+                      <li><a href="home.html" >Home</a></li>
+                      <li class="reports-nav inner">
+                     
+                        <a href="chart.html" class="active">Charts</a> 
+                        <ul>
+                            <li><a href="scatterchart.html">Total Earnings / Org Volume– Scatter Chart </a></li>
+                            <li><a href="piechart.html">Total Earnings / Org Volume– Pie Chart</a></li>
+                            <li><a href="barchart.html">Total Earnings / Org Volume– Bar Chart</a></li>
+                            <li><a href="linechart.html">Total Earnings / Org Volume– Line Chart</a></li>
+                            <li><a href="4axischart.html">Total Earnings / Org Volume– 4Axis Chart</a></li>
+                        </ul>
+                        
+                    </li>
+                      <li class="charts-nav"><a href="reports.html" >Reports</a> 
+                          <ul>
+                              <li><a href="totalearning.html">Total Earnings as a percent of Total Volume</a></li>
+                              <li><a href="totalenrolled.html">Number enrolled by Category </a></li>
+                          </ul>
+                       
+                      </li>
+                      <li><a href="prefences.html">Prefences</a></li>
+                      <li><a href="help.html">Help</a></li>
+                  </ul>
+                  
+              </div>
+              </nav>
+            <div class="admin-logged-in"> 
+              <div class="profile-wrapper">
+                <a href="#" onclick="toggleBlur()" class="display-picture"><img src="assets/imgs/Mask group (19).png" alt=""> <img src="assets/imgs/bottom-arrow.png" alt=""> </a>
+              </div>
+              <div class="card hidden">
+               <div class="profile-image">
+                <img src="assets/imgs/Mask group (19).png" alt="">
+               </div>
+                <h3>Your Name</h3>
+                <p>yourmail@mail.com</p>
+                <ul>
+                  <li><a href="#">Client 1</li></a>
+                  <li><a href="#">Client 2</li></a>
+                  <li class="non-active"><a href="#">Client 3</li></a>
+                </ul>
+                <div class="log-out">
+                    <a href="index.html">
+                      <button>Log Out</button>
+                    </a>
+                </div>
+              </div>
+             
+            
+              
+            </div>
+        </header>
+
+
+
+
+            <section id="mainContent">
+              <div class="main-status-wrapper">
+                
+
+
+                <div class="piechart-wrapper">
+                    <div class="status-warpper">
+                        <div class="status-heading-wrapper">
+                          <div class="piechart-text-wrapper">
+                            <h2>Total Earnings / Org Volume</h2>
+                          <p>Scatter Chart</p>
+                          </div>
+                          <div class="inner-text-wrapper">
+                            <div class="chart-bar-wrapper">
+                                
+                            </div>
+                            <div class="color-wrapper">
+                                <label for="">
+                                  <div class="legend" id="legend"></div> 
+                                  
+                                </label>
+                                <a href="setting.html"><img src="assets/imgs/screening.png" alt=""> </a>
+                            </div>
+                            <div class="inner-setting-wrapper">
+                               
+                            </div>
+                        </div>
+                      </div>
+                     
+                </div>
+                  
+                    
+                
+
+                  <div class="chart-wrapper">
+                    <div id="plot"></div>
+                  </div>
+                
+              </div>
+              </div>
+      
+      </section>
+
+      </div>
+
+    </div>
+    <footer>
+     
+    </footer>
+    
+    <script src="assets/js/app.js"></script>
+
+   
+      <script>
+// Define the layout for the plot with logarithmic axes
+const layout = {
+  xaxis: {
+    title: 'Org Volume',
+    type: 'log'
+  },
+  yaxis: {
+    title: 'Total Earnings',
+    type: 'log'
+  }
+};
+
+// Generate random data points
+const randomData = generateRandomData();
+
+// Add a line to the plot
+const lineData = {
+  x: [5, 92000],
+  y: [3, 89000],
+  mode: 'lines',
+  type: 'scatter',
+  line: {
+    color: '#0773AD',  // Line color
+    width: 4
+  }
+};
+
+// Define annotations for specific points on the plot
+const annotations = [
+  {
+    x: Math.log10(2.5),
+    y: Math.log10(14),
+    xref: 'x',
+    yref: 'y',
+    text: '',
+    showarrow: false,
+    arrowhead: 2,
+    ax: 0,
+    ay: -40
+  },
+  {
+    x: Math.log10(5),
+    y: Math.log10(20),
+    xref: 'x',
+    yref: 'y',
+    text: '',
+    showarrow: false,
+    arrowhead: 2,
+    ax: -30,
+    ay: -30
+  }
+];
+
+// Add annotations to the layout
+layout.annotations = annotations;
+
+// Create the plot using Plotly
+Plotly.newPlot('plot', [randomData, lineData], layout);
+
+// Event handler for click events on data points
+document.getElementById('chart').on('plotly_click', function(data) {
+  const point = data.points[0];
+  alert(`Clicked on Data Point\nX: ${point.x.toFixed(2)}\nY: ${point.y.toFixed(2)}`);
+});
+
+// Disable navigation for the Plotly logo link
+const plotlyLogoLink = document.querySelector('.plotly .main-svg');
+if (plotlyLogoLink) {
+  plotlyLogoLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default navigation behavior
+    alert('Disabled navigation!');
+  });
+}
+
+// Function to generate random data
+function generateRandomData() {
+  const data = {
+    x: [],
+    y: [],
+    mode: 'markers',
+    type: 'scatter',
+    name: 'My Percent',
+    marker: {
+      symbol: 'cicle',
+      color: []
+    }
+  };
+
+  for (let i = 0; i < 50; i++) {
+    const x = Math.pow(10, Math.random() * 4 + 1); // Linear scale between 10 and 10000
+    const y = Math.pow(10, Math.random() * 4 + 1); // Linear scale between 10 and 10000
+    data.x.push(x);
+    data.y.push(y);
+    data.marker.color.push(y > 5000 ? '#008475' : '008475');
+  }
+
+  return data;
+}
+      </script>
+</body>
+</html>

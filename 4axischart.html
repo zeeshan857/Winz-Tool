@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/graphs.css">
+    <link rel="shortcut icon" href="assets/imgs/Fav-Icon.png" type="image/x-icon">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+
+    </style>
+    
+</head>
+<body>
+    <div class="home-main-wrapper" id="piechart">
+        <div class="container-fluid">
+          <div class="logged-in-user">
+            <p>Designer Zee</p>
+          </div>
+          <header class="header-wrapper">
+            <div class="logo">
+                <img src="assets/imgs/Winz-Logo-2.png" alt="logo Winz">
+            </div>
+            <nav>
+                <div class="tutorial">
+                  <ul>
+                      <li><a href="home.html" >Home</a></li>
+                      <li class="reports-nav inner">
+                     
+                        <a href="chart.html" class="active">Charts</a> 
+                        <ul>
+                            <li><a href="scatterchart.html">Total Earnings / Org Volume– Scatter Chart </a></li>
+                            <li><a href="piechart.html">Total Earnings / Org Volume– Pie Chart</a></li>
+                            <li><a href="barchart.html">Total Earnings / Org Volume– Bar Chart</a></li>
+                            <li><a href="linechart.html">Total Earnings / Org Volume– Line Chart</a></li>
+                            <li><a href="4axischart.html">Total Earnings / Org Volume– 4Axis Chart</a></li>
+                        </ul>
+                        
+                    </li>
+                      <li class="charts-nav"><a href="reports.html" >Reports</a> 
+                          <ul>
+                              <li><a href="totalearning.html">Total Earnings as a percent of Total Volume</a></li>
+                              <li><a href="totalenrolled.html">Number enrolled by Category </a></li>
+                          </ul>
+                       
+                      </li>
+                      <li><a href="prefences.html">Prefences</a></li>
+                      <li><a href="help.html">Help</a></li>
+                  </ul>
+                  
+              </div>
+              </nav>
+            <div class="admin-logged-in"> 
+              <div class="profile-wrapper">
+                <a href="#" onclick="toggleBlur()" class="display-picture"><img src="assets/imgs/Mask group (19).png" alt=""> <img src="assets/imgs/bottom-arrow.png" alt=""> </a>
+              </div>
+              <div class="card hidden">
+               <div class="profile-image">
+                <img src="assets/imgs/Mask group (19).png" alt="">
+               </div>
+                <h3>Your Name</h3>
+                <p>yourmail@mail.com</p>
+                <ul>
+                  <li><a href="#">Client 1</li></a>
+                  <li><a href="#">Client 2</li></a>
+                  <li class="non-active"><a href="#">Client 3</li></a>
+                </ul>
+                <div class="log-out">
+                    <a href="index.html">
+                      <button>Log Out</button>
+                    </a>
+                </div>
+              </div>
+             
+            
+              
+            </div>
+        </header>
+
+
+
+
+            <section id="mainContent">
+              <div class="main-status-wrapper">
+                
+
+
+                <div class="piechart-wrapper">
+                    <div class="status-warpper">
+                        <div class="status-heading-wrapper">
+                          <div class="piechart-text-wrapper">
+                            <h2>Total Earnings / Org Volume</h2>
+                          <p>4 Axis Chart</p>
+                          </div>
+                          <div class="inner-text-wrapper">
+                            <div class="chart-bar-wrapper">
+                                
+                            </div>
+                            <div class="color-wrapper">
+                              
+                                <!-- <img src="assets/imgs/setting.png" alt="">  -->
+                                <div class="legend-container" id="legend-container"></div>
+                            </div>
+                            <div class="inner-setting-wrapper">
+                               
+                            </div>
+                        </div>
+                      </div>
+                     
+                </div>
+                  
+                    
+                
+
+                  <div class="chart-wrapper">
+                   
+                    <!-- <div class="wrapper">
+  
+                        <div id="chart-container"></div>
+                        
+                        </div> -->
+                
+              </div>
+              </div>
+      
+      </section>
+
+      </div>
+
+    </div>
+    <footer>
+     
+    </footer>
+    
+                    <!-- <div id="chartdiv"></div> -->
+    <script src="assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+ 
+    <script>
+        const xValues = [
+          1, 
+          2,
+          3, 
+          4, 
+          5
+        ];
+        const y1Values = [
+          10, 
+        15, 
+        13, 
+        17, 
+        10
+      ];
+        const y2Values = [
+          16, 
+        5, 
+        11, 
+        9, 
+        15
+      ];
+        const y3Values = [
+          12, 
+        9, 
+        15, 
+        12, 
+        14
+      ];
+        const y4Values = [
+          8, 
+        12, 
+        14, 
+        6, 
+        9
+      ];
+    
+        const yaxis1 = {
+          x: xValues,
+          y: y1Values,
+          name: 'Y-axis 1',
+          type: 'scatter',
+          yaxis: 'y',
+        };
+    
+        const yaxis2 = {
+          x: xValues,
+          y: y2Values,
+          name: 'Y-axis 2',
+          type: 'scatter',
+          yaxis: 'y2',
+        };
+    
+        const yaxis3 = {
+          x: xValues,
+          y: y3Values,
+          name: 'Y-axis 3',
+          type: 'scatter',
+          yaxis: 'y3',
+        };
+    
+        const yaxis4 = {
+          x: xValues,
+          y: y4Values,
+          name: 'Y-axis 4',
+          type: 'scatter',
+          yaxis: 'y4',
+        };
+    
+        const layout = {
+          yaxis: {
+            title: 'Y-axis 1',
+            titlefont: {
+              color: 'blue'
+            },
+            ticks: 'outside'
+          },
+          yaxis2: {
+            title: 'Y-axis 2',
+            overlaying: 'y',
+            side: 'right',
+            titlefont: {
+              color: 'red'
+            },
+            ticks: 'outside',
+          },
+          yaxis3: {
+            title: 'Y-axis 3',
+            overlaying: 'y',
+            side: 'left',
+            position: 0.05,
+            titlefont: {
+              color: 'green'
+            },
+            ticks: 'outside',
+          },
+          yaxis4: {
+            title: 'Y-axis 4',
+            overlaying: 'y',
+            side: 'right',
+            position: 0.95,
+            titlefont: {
+              color: 'purple'
+            },
+            ticks: 'outside',
+          },
+          grid: {
+            rows: 1,
+            columns: 1,
+            pattern: 'independent'
+          },
+          displayModeBar: false, 
+        };
+        
+        const data = [yaxis1, yaxis2, yaxis3, yaxis4];
+        Plotly.newPlot('chart-container', data, layout);
+    
+        const legendContainer = document.getElementById('legend-container');
+        data.forEach(trace => {
+          const legendBox = document.createElement('div');
+          legendBox.className = 'legend-box';
+    
+          const legendColor = document.createElement('div');
+          legendColor.className = 'legend-color';
+          legendColor.style.backgroundColor = trace.marker ? trace.marker.color : 'blue';
+    
+          const legendText = document.createElement('span');
+          legendText.textContent = trace.name;
+    
+          legendBox.appendChild(legendColor);
+          legendBox.appendChild(legendText);
+          legendContainer.appendChild(legendBox);
+        });
+        
+      </script> -->
+    <!-- <script>
+  var data = {
+    "datasets": [
+      {
+        "backgroundColor": "#1BACFE",
+        "borderColor": "#1BACFE",
+        "fill": false,
+        "data": [
+          9,
+          11.5,
+          13.5,
+          12.5,
+          11.7,
+          12.5,
+          12,
+          9
+        ],
+        "id": "amount",
+        "label": "",
+				"yAxisID":"left"
+      },
+      {
+        "backgroundColor": "#1DCB01",
+        "borderColor": "#1DCB01",
+        "fill": false,
+        "data": [
+          15,
+          12,
+          9,
+          10.7,
+          12.3,
+          12.1,
+          11.4,
+          12.7,
+          14.2
+        ],
+        "id": "amount",
+        "label": "",
+				"yAxisID":"right"
+
+      },
+      {
+        "backgroundColor": "#CF0000",
+        "borderColor": "#CF0000",
+        "fill": false,
+        "data": [
+          12,
+          10.7,
+          9,
+          12,
+          15,
+          13.3,
+          12,
+          12.8,
+          13.8
+        ],
+        "id": "amount",
+        "label": "",
+				"yAxisID":"right"
+
+      },
+      {
+        "backgroundColor": "#CDB900",
+        "borderColor": "#CDB900",
+        "fill": false,
+        "data": [
+          10.7,
+          12,
+          13.5,
+          14.5,
+          15,
+          12,
+          9,
+          10.2,
+          11.3
+        ],
+        "id": "amount",
+        "label": "",
+				"yAxisID":"right"
+
+      }
+    ],
+    "labels": [
+      "1",
+      "1.5",
+      "2",
+      "2.5",
+      "3",
+      "3.5",
+      "4",
+      "4.5",
+      "5"
+    ]
+  };
+var options = {
+    "elements": {
+      "rectangle": {
+        "borderWidth": 0.5
+      }
+    },
+    "layout": {
+      "padding": 0
+    },
+    "legend": {
+      "display": true,
+      "labels": {
+        "boxWidth": 1
+      }
+    },
+    "maintainAspectRatio": false,
+    "responsive": true,
+    "scales": {
+      "xAxes": [
+        {
+          "gridLines": {
+            "display": false
+          },
+          "scaleLabel": {
+            "display": false,
+            "labelString": "Date"
+          },
+          "stacked": false,
+          "ticks": {
+            "autoSkip": false,
+            "beginAtZero": false
+          },
+          "time": {
+            "tooltipFormat": "",
+            "unit": "quarter"
+          },
+          "type": "time"
+        }
+      ],
+      "yAxes": [
+        {
+          "scaleLabel": {
+            "display": false,
+            "labelString": ""
+          },
+					"id": "left",
+          "stacked": false,
+          "ticks": {
+            "beginAtZero": false
+          }
+        },
+        {
+          "scaleLabel": {
+            "display": false,
+            "labelString": ""
+          },
+					"id": "right",
+					"position": "right",
+          "stacked": false,
+          "ticks": {
+            "beginAtZero": false
+          }
+        }
+      ]
+    },
+    "title": {
+      "display": false
+    },
+    "tooltips": {
+      "intersect": false,
+      "mode": "index",
+      "position": "nearest",
+      "callbacks": {}
+    }
+  }
+var type = "line";
+
+var myChart = new Chart(document.getElementById("myChart").getContext('2d'), {options, data, type});
+
+
+
+        </script>
+        
+
+
+
+</body>
+</html>

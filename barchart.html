@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/graphs.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="shortcut icon" href="assets/imgs/Fav-Icon.png" type="image/x-icon">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<body>
+    <div id="barchart">
+        <div class="container-fluid">
+          <div class="logged-in-user">
+            <p>Designer Zee</p>
+          </div>
+		  <header class="header-wrapper">
+			<div class="logo">
+				<img src="assets/imgs/Winz-Logo-2.png" alt="logo Winz">
+			</div>
+			<nav>
+				<div class="tutorial">
+				  <ul>
+					  <li><a href="home.html">Home</a></li>
+					  <li class="reports-nav inner">
+					 
+						<a href="chart.html" class="active">Charts</a> 
+						<ul>
+							<li><a href="scatterchart.html">Total Earnings / Org Volume– Scatter Chart </a></li>
+							<li><a href="piechart.html">Total Earnings / Org Volume– Pie Chart</a></li>
+							<li><a href="barchart.html">Total Earnings / Org Volume– Bar Chart</a></li>
+							<li><a href="linechart.html">Total Earnings / Org Volume– Line Chart</a></li>
+							<li><a href="4axischart.html">Total Earnings / Org Volume– 4Axis Chart</a></li>
+						</ul>
+						
+					</li>
+					  <li class="charts-nav"><a href="reports.html" >Reports</a> 
+						  <ul>
+							  <li><a href="totalearning.html">Total Earnings as a percent of Total Volume</a></li>
+							  <li><a href="totalenrolled.html">Number enrolled by Category </a></li>
+						  </ul>
+					   
+					  </li>
+					  <li><a href="prefences.html">Prefences</a></li>
+					  <li><a href="help.html">Help</a></li>
+				  </ul>
+				  
+			  </div>
+			  </nav>
+			<div class="admin-logged-in"> 
+			  <div class="profile-wrapper">
+				<a href="#" onclick="toggleBlur()" class="display-picture"><img src="assets/imgs/Mask group (19).png" alt=""> <img src="assets/imgs/bottom-arrow.png" alt=""> </a>
+			  </div>
+			  <div class="card hidden">
+			   <div class="profile-image">
+				<img src="assets/imgs/Mask group (19).png" alt="">
+			   </div>
+				<h3>Your Name</h3>
+				<p>yourmail@mail.com</p>
+				<ul>
+				  <li><a href="#">Client 1</li></a>
+				  <li><a href="#">Client 2</li></a>
+				  <li class="non-active"><a href="#">Client 3</li></a>
+				</ul>
+				<div class="log-out">
+					<a href="index.html">
+					  <button>Log Out</button>
+					</a>
+				</div>
+			  </div>
+			 
+			
+			  
+			</div>
+		</header>
+
+
+
+            <section id="mainContent" class="container-fluid">
+                <div class="bar-chart-wrapper">
+                    <div class="heading-wrapper">
+                        <h2>Total Earnings / Org Volume</h2>
+                        <p>Bar Chart</p>
+                      </div>
+                    <div id="wrapper">
+                        <div class="chart">
+                            <table id="data-table" border="1" cellpadding="10" cellspacing="0" summary="skillset">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th scope="col">A</th>
+                                        <th scope="col">B</th>
+                                        <th scope="col">C</th>
+                                        <th scope="col">D</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>		
+                                        <td class="chart-1">10</td>
+                                        <td class="chart-2">20</td>
+                                        <td class="chart-3">15</td>
+                                        <td class="chart-4">25</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+
+      </div>
+
+    </div>
+    <footer>
+     
+    </footer>
+
+
+    
+     
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+  $('#data-table').addClass('js');
+
+	createGraph('#data-table', '.chart');
+	
+	function createGraph(data, container) {
+		var bars = [];
+		var figureContainer = $('<div id="figure"></div>');
+		var graphContainer = $('<div class="graph"></div>');
+		var barContainer = $('<div class="bars"></div>');
+		var data = $(data);
+		var container = $(container);
+		var chartData;		
+		var chartYMax;
+		var columnGroups;
+		
+		var barTimer;
+		var graphTimer;
+		
+		var tableData = {
+			chartData: function() {
+				var chartData = [];
+				data.find('tbody td').each(function() {
+					chartData.push($(this).text());
+				});
+				return chartData;
+			},
+			chartHeading: function() {
+				var chartHeading = data.find('caption').text();
+				return chartHeading;
+			},
+			chartLegend: function() {
+				var chartLegend = [];
+				data.find('tbody th').each(function() {
+					chartLegend.push($(this).text());
+				});
+				return chartLegend;
+			},
+			chartYMax: function() {
+				var chartData = this.chartData();
+				var chartYMax = Math.ceil(Math.max.apply(Math, chartData) / 100) * 35;
+				return chartYMax;
+			},
+            yLegend: function() {
+                var yAxisLegend = [];
+                var yAxisInterval = 5;
+                
+                var maxYValue = Math.ceil(chartYMax / yAxisInterval) * yAxisInterval;
+
+                for (var i = maxYValue; i >= 0; i -= yAxisInterval) {
+                    yAxisLegend.push(i);
+                }
+                return yAxisLegend;
+            },
+			xLegend: function() {
+				var xLegend = [];
+				data.find('thead th').each(function() {
+					xLegend.push($(this).text());
+				});
+				return xLegend;
+			},
+			columnGroups: function() {
+				var columnGroups = [];
+				var columns = data.find('tbody tr:eq(0) td').length;
+				for (var i = 0; i < columns; i++) {
+					columnGroups[i] = [];
+					data.find('tbody tr').each(function() {
+						columnGroups[i].push($(this).find('td').eq(i).text());
+					});
+				}
+				return columnGroups;
+			}
+		}
+		
+		chartData = tableData.chartData();		
+		chartYMax = tableData.chartYMax();
+		columnGroups = tableData.columnGroups();
+		
+		$.each(columnGroups, function(i) {
+
+			var barGroup = $('<div class="bar-group"></div>');
+
+        for (var j = 0, k = columnGroups[i].length; j < k; j++) {
+            var barObj = {};
+            barObj.label = parseFloat(this[j]); 
+            barObj.height = (barObj.label / chartYMax) * 100 + '%';  
+            
+            var customClass = 'custom-bar-' + (j + 1);
+            
+            barObj.bar = $('<div class="bar fig' + j + '"><span>' + barObj.label + '</span></div>')
+                .appendTo(barGroup);
+            bars.push(barObj);
+        }
+			barGroup.appendTo(barContainer);			
+		});
+
+		var chartLegend	= tableData.chartLegend();
+		var legendList	= $('<ul class="legend"></ul>');
+		$.each(chartLegend, function(i) {			
+			var listItem = $('<li><span class="icon fig' + i + '"></span>' + this + '</li>')
+				.appendTo(legendList);
+		});
+		legendList.appendTo(figureContainer);
+		
+		var xLegend	= tableData.xLegend();		
+		var xAxisList	= $('<ul class="x-axis"></ul>');
+		$.each(xLegend, function(i) {			
+			var listItem = $('<li><span>' + this + '</span></li>')
+				.appendTo(xAxisList);
+		});
+		xAxisList.appendTo(graphContainer);
+		
+		var yLegend	= tableData.yLegend();
+		var yAxisList	= $('<ul class="y-axis"></ul>');
+		$.each(yLegend, function(i) {			
+			var listItem = $('<li><span>' + this + '</span></li>')
+				.appendTo(yAxisList);
+		});
+		yAxisList.appendTo(graphContainer);		
+		
+		barContainer.appendTo(graphContainer);		
+		
+		graphContainer.appendTo(figureContainer);
+		
+		figureContainer.appendTo(container);
+		
+		function displayGraph(bars, i) {		
+			if (i < bars.length) {
+				$(bars[i].bar).animate({
+					height: bars[i].height
+				}, 800);
+				barTimer = setTimeout(function() {
+					i++;				
+					displayGraph(bars, i);
+				}, 100);
+			}
+		}
+		
+		function resetGraph() {
+			$.each(bars, function(i) {
+				$(bars[i].bar).stop().css('height', 0);
+			});
+			
+			clearTimeout(barTimer);
+			clearTimeout(graphTimer);
+			
+			graphTimer = setTimeout(function() {		
+				displayGraph(bars, 0);
+			}, 200);
+		}
+		
+		$('#reset-graph-button').click(function() {
+			resetGraph();
+			return false;
+		});
+
+		resetGraph();
+	}	
+});
+
+    </script>
+
+
+</body>
+</html>

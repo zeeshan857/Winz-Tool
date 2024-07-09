@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="shortcut icon" href="assets/imgs/Fav-Icon.png" type="image/x-icon">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <style>
+        #charts .volume-wrapper{
+            max-width: 100%;
+        }
+        #charts .heading-wrapper {
+            height: 50px;
+            box-shadow: 0px 22px 60.7px 6px rgba(27, 82, 71, 0.13);
+        }
+
+        #charts .report-wrapper {
+            height:500px;
+            box-shadow: 0px 22px 60.7px 6px rgba(27, 82, 71, 0.13);
+        }
+        #charts .loading {
+            position: fixed;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            animation: backGround 5s ease infinite;
+            }
+
+            #charts .loadingWrapper {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            }
+
+            #charts #loading {
+            margin: auto;
+            height: 100px;
+            width: 100px;
+            border: transparent;
+            border-top: 10px solid  #D5F3EC;
+            border-right: 10px solid #02C8BE;
+            border-left: 10px solid  #D5F3EC;
+            border-bottom: 10px solid #1CAEFE;
+            
+            border-radius: 50%;
+            animation: round 1s linear infinite;
+            }
+
+            #charts p {
+            color: #7B8995;
+            text-align: center;
+            font-family: Jost;
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            top: 50%;
+            }
+
+            @keyframes round {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+            }
+
+            @keyframes backGround {
+            0% {
+                background-color:#FFFFFF00 ;
+            }
+            50% {
+                background-color:  #D5F3EC;
+            }
+            75% {
+                background-color: #FFFFFF00;
+            }
+            100% {
+                background-color: #D5F3EC;
+            }
+            } 
+    </style>
+</head>
+<body class="loading">
+    <div class="home-main-wrapper">
+        <div class="container-fluid">
+          <div class="logged-in-user">
+            <p>Designer Zee</p>
+          </div>
+          <header class="header-wrapper">
+            <div class="logo">
+                <img src="assets/imgs/Winz-Logo-2.png" alt="logo Winz">
+            </div>
+            <nav>
+                <div class="tutorial">
+                  <ul>
+                      <li><a href="home.html">Home</a></li>
+                      <li class="reports-nav inner">
+                     
+                        <a href="chart.html">Charts</a> 
+                        <ul>
+                            <li><a href="scatterchart.html">Total Earnings / Org Volume– Scatter Chart </a></li>
+                            <li><a href="piechart.html">Total Earnings / Org Volume– Pie Chart</a></li>
+                            <li><a href="barchart.html">Total Earnings / Org Volume– Bar Chart</a></li>
+                            <li><a href="linechart.html">Total Earnings / Org Volume– Line Chart</a></li>
+                            <li><a href="4axischart.html">Total Earnings / Org Volume– 4Axis Chart</a></li>
+                        </ul>
+                        
+                    </li>
+                      <li class="charts-nav"><a href="reports.html" >Reports</a> 
+                          <ul>
+                              <li><a href="totalearning.html">Total Earnings as a percent of Total Volume</a></li>
+                              <li><a href="totalenrolled.html">Number enrolled by Category </a></li>
+                          </ul>
+                       
+                      </li>
+                      <li><a href="prefences.html">Prefences</a></li>
+                      <li><a href="help.html" class="active">Help</a></li>
+                  </ul>
+                  
+              </div>
+              </nav>
+            <div class="admin-logged-in"> 
+              <div class="profile-wrapper">
+                <a href="#" onclick="toggleBlur()" class="display-picture"><img src="assets/imgs/Mask group (19).png" alt=""> <img src="assets/imgs/bottom-arrow.png" alt=""> </a>
+              </div>
+              <div class="card hidden">
+               <div class="profile-image">
+                <img src="assets/imgs/Mask group (19).png" alt="">
+               </div>
+                <h3>Your Name</h3>
+                <p>yourmail@mail.com</p>
+                <ul>
+                  <li><a href="#">Client 1</li></a>
+                  <li><a href="#">Client 2</li></a>
+                  <li class="non-active"><a href="#">Client 3</li></a>
+                </ul>
+                <div class="log-out">
+                    <a href="index.html">
+                      <button>Log Out</button>
+                    </a>
+                </div>
+              </div>
+             
+            
+              
+            </div>
+        </header>
+
+
+
+            <section id="mainContent">
+                    <div id="charts">
+                        <div class="main-status-wrapper">
+                            <div class="volume-wrapper">
+                              <div class="heading-wrapper">
+                                <h2></h2>
+                              </div>
+                              <div class="report-wrapper">
+                                
+                                    <div class="loadingWrapper">
+                                      <div id="loading"> </div>
+                                      <p>Please wait</p>
+                                    </div>
+                                  
+                              </div>
+                            </div>
+                            </div>
+                    </div>
+              </section>
+
+      </div>
+
+    </div>
+    <footer>
+     
+    </footer>
+
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        $(window).load(function(){
+
+      });
+    </script>
+
+</body>
+</html>

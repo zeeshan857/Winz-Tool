@@ -1,0 +1,244 @@
+.piechart-text-wrapper p {
+	color: #798793;
+  
+  font-family: Jost;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  }
+#barchart .container-fluid{
+    width: 1500px;
+}
+.heading-wrapper, .status-heading-wrapper {
+    margin-bottom: 50px;
+}
+.bar-chart-wrapper {
+    border-radius: 44px;
+    background: #FFF;
+    box-shadow: 0px 22px 60.7px 6px rgba(122, 145, 166, 0.19);
+}
+
+/* Table */
+#data-table {
+	border: none; /* Turn off all borders */
+	border-top: 1px solid #ccc;
+	width: 60%;
+}
+#data-table th, 
+#data-table td {
+	border: none; /* Turn off all borders */
+	border-bottom: 1px solid #ccc;
+	margin: 0;
+	padding: 10px;
+	text-align: left;	
+}
+
+/* Toggle */
+.toggles {
+	background: #ebebeb;	
+	color: #545454;
+	height: 20px;
+	padding: 15px;
+}
+.toggles p {
+	margin: 0;
+}
+.toggles a {
+	background: #222;
+	border-radius: 3px;	
+	color: #fff;
+	display: block;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 0 6px;
+	text-decoration: none;
+}
+.toggles a:hover {
+	background: #666;
+}
+#reset-graph-button {
+	float:right;
+}
+
+#wrapper {
+	margin: 25px auto;
+  width: 80%;
+}
+#figure {
+	height: 400px;
+	position: relative;
+}
+#figure ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.graph {
+	height: 380px;
+	position: relative;
+}
+
+/* Legend */
+.legend {
+	background: #f0f0f0;
+	border-radius: 4px;
+	bottom: 0;
+	position: absolute;
+	text-align: left;
+	width: 540px;	
+}
+.legend li {
+	display: block;
+	float: left;
+	height: 20px;
+	margin: 0;
+	padding: 10px 30px;
+	width: 120px;
+}
+.legend span.icon {
+	background-position: 50% 0;
+	border-radius: 2px;
+	display: block;
+	float: left;
+	height: 16px;
+	margin: 2px 10px 0 0;
+	width: 16px;	
+}
+
+/* X-Axis */
+.x-axis {
+	bottom: 0;
+	color: #555;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+    right: -27%;
+}
+.x-axis li {
+	float: left;
+    margin: 0 auto;
+    padding: 5px 0;
+    width: 15%;
+}
+.x-axis li span {
+  float: left;
+}
+/* Y-Axis */
+.y-axis {
+	color: #555;
+	position: absolute;
+	text-align: right;
+	width: 100%;
+}
+.y-axis li {
+	border-top: 1px solid #ccc;
+	display: block;
+	height: 48px;
+	width: 80%;
+    margin: 0 auto;
+}
+.y-axis li span {
+	display: block;
+	margin: -10px 0 0 -60px;
+	padding: 0 10px;
+	width: 40px;
+}
+
+/* Graph Bars */
+.bars {
+	height: 398px;
+	width: 80%;
+    margin: 10px auto;
+	z-index: 10;
+    text-align: center;
+}
+.bar-group {
+	height: 100%;
+	margin: 0 15px;
+	position: relative;
+	width: 15%;
+    display: inline-block;
+}
+.bar {
+	border-radius: 3px 3px 0 0;
+	bottom: 55px;
+	cursor: pointer;	
+	height: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+.bar span {
+	background: #fefefe;
+	border-radius: 3px;
+	left: -8px;
+	display: none;
+	margin: 0;
+	position: relative;
+	text-shadow: rgba(255, 255, 255, 0.8) 0 1px 0;
+	width: 50px;
+	z-index: 20;
+	
+	-webkit-box-shadow: rgba(0, 0, 0, 0.6) 0 1px 4px;
+	box-shadow: rgba(0, 0, 0, 0.6) 0 1px 4px;
+}
+.bar:hover span {
+	display: block;
+	margin-top: -25px;
+}
+
+#data-table.js {
+	display: none;
+}
+.bar span {
+	background: #fefefe;
+}
+.bar.fig0 , .bar.custom-bar-1{
+    background: linear-gradient(0deg, #7DE7FF 0%, #06BBE3 100%);
+}
+canvas#canvas {
+    display: block;
+    width: 1275px;
+    height: 500px;
+    padding: 0 0 30px 0;
+}
+#piechart .status-warpper{
+	width: 100%;
+	max-width: 100% !important;
+}
+#piechart div#legend {
+    background: none;
+    position: relative;
+    width: auto;
+}
+#piechart .status-heading-wrapper {
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: self-end;
+}
+#piechart .main-status-wrapper {
+	display: block;
+}
+#piechart .color-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+#piechart .chart-wrapper {
+    background: white;
+    text-align: center;
+    padding: 40px 0;
+    border-bottom-left-radius: 44px;
+    box-shadow: 0px 22px 60.7px 6px rgba(27, 82, 71, 0.13);
+    border-bottom-right-radius: 44px;
+	margin-top: -50px;
+}
+#piechart .status-heading-wrapper {
+    border-top-right-radius: 44px;
+    border-top-left-radius: 44px;
+    background: #FFF;
+    box-shadow: 0px 22px 60.7px 6px rgba(122, 145, 166, 0.19);
+    padding: 36px 36px 18px;
+}
